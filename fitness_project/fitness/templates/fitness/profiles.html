@@ -1,0 +1,14 @@
+{% extends 'fitness/base.html' %}
+{% block content %}
+<h1>
+    Тренеры
+</h1>
+<div class="content">
+    <div class="wrap">
+        {% for profile in profiles %}
+        <div class="bg">{{ profile.name }}</div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}
