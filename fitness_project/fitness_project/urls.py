@@ -27,4 +27,5 @@ urlpatterns = [
 
     path('current/', views.currenttodos, name='currenttodos'),
     path('', views.home, name='home'),
+    path('profiles/', views.profiles, name='profiles'),
 ]

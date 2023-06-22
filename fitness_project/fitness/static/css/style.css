@@ -81,6 +81,7 @@ input{
     padding: 40px;
     box-sizing: border-box;
     border-radius: 6px;
+    margin: 10px;
 }
 .top{
     padding: 2px 24px;

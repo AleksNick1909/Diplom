@@ -3,10 +3,17 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
+from .models import Profile
 
 
 def home(request):
     return render(request, 'fitness/home.html')
+
+
+def profiles(request):
+    prof = Profile.objects.all()
+    context = {'profiles': prof}
+    return render(request, 'fitness/profiles.html', context)
 
 
 def signupuser(request):
@@ -51,3 +58,6 @@ def loginuser(request):
         else:
             login(request, user)
             return redirect('currenttodos')
+
+
+
