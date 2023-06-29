@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import Profile
+from django.contrib.auth.decorators import login_required
 
 
 def home(request):
@@ -16,16 +17,18 @@ def profiles(request):
     return render(request, 'fitness/profiles.html', context)
 
 
-def signupuser(request):
+def signup_user(request):
     if request.method == 'GET':
         return render(request, 'fitness/signupuser.html', {'form': UserCreationForm()})
     else:
         if request.POST['password1'] == request.POST['password2']:
             try:
+
                 user = User.objects.create_user(request.POST['username'], password=request.POST['password1'])
                 user.save()
+
                 login(request, user)
-                return redirect('currenttodos')
+                return redirect('account')
             except IntegrityError:
                 return render(request, 'fitness/signupuser.html',
                               {'form': UserCreationForm(), 'error':
@@ -36,17 +39,22 @@ def signupuser(request):
                               'Пароли не совпадают!!!'})
 
 
-def currenttodos(request):
-    return render(request, 'fitness/currenttodos.html')
+def coach(request, pk):
+    prof = Profile.objects.get(id=pk)
+
+    context = {
+        'profile': prof,
+    }
+    return render(request, 'fitness/coach.html', context)
 
 
-def logoutuser(request):
+def logout_user(request):
     if request.method == 'POST':
         logout(request)
-        return redirect('home')
+        return redirect('loginuser')
 
 
-def loginuser(request):
+def login_user(request):
     if request.method == 'GET':
         return render(request, 'fitness/loginuser.html', {'form': AuthenticationForm()})
     else:
@@ -57,7 +65,15 @@ def loginuser(request):
                 'error': 'Неверные данные для входа!!!'})
         else:
             login(request, user)
-            return redirect('currenttodos')
+            return redirect('account')
 
 
+@login_required(login_url='loginuser')
+def user_account(request):
+    prof = request.user.profile
+
+    context = {
+        'profile': prof,
+    }
+    return render(request, 'fitness/account.html', context)
 
