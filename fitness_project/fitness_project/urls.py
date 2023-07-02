@@ -32,6 +32,8 @@ urlpatterns = [
 
     path('', views.home, name='home'),
     path('profiles/', views.profiles, name='profiles'),
+
+    path('edit-account/', views.edit_account, name='edit-account'),
 ]
 
 if settings.DEBUG:

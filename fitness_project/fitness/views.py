@@ -71,9 +71,16 @@ def login_user(request):
 @login_required(login_url='loginuser')
 def user_account(request):
     prof = request.user.profile
+    skills = prof.skill_set.all()
 
     context = {
         'profile': prof,
+        'skills': skills,
     }
     return render(request, 'fitness/account.html', context)
+
+
+@login_required(login_url='loginuser')
+def edit_account(request):
+    return render(request, 'fitness/profile_form.html')
 

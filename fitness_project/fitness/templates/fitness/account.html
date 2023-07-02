@@ -1,4 +1,54 @@
 {% extends 'fitness/base.html' %}
 {% block content %}
 
+<main>
+    <div class="container">
+        <a class="tag tag--pill tag--main settings__btn" href="{% url 'edit-account' %}"><i class="im im-edit"></i> Edit</a>
+        <img src="{{ profile.profile_image.url }}" alt="">
+        <h2>{{ profile.name }}</h2>
+        <p>{{ profile.short_info }}</p>
+        <ul>
+            {% if profile.social_inst %}
+            <li>
+                <a title="inst" href="{{ profile.social_inst }}" target="_blank">INST</a>
+            </li>
+            {% endif %}
+            {% if profile.social_vk %}
+            <li>
+                <a title="inst" href="{{ profile.social_vk }}" target="_blank">VK</a>
+            </li>
+            {% endif %}
+            {% if profile.social_web %}
+            <li>
+                <a title="inst" href="{{ profile.social_web }}" target="_blank">WEB</a>
+            </li>
+            {% endif %}
+        </ul>
+        <p>
+           {{ profile.bio }}
+        </p>
+    </div>
+    <div class="settings">
+        <h3 class="settings__title">Skills</h3>
+        <a class="tag tag--pill tag--sub settings__btn tag--lg" href="#"><i class="im im-plus"></i> Add Skill</a>
+    </div>
+
+    <table class="settings__table">
+        {% for skill in skills %}
+        <tr>
+            <td class="settings__tableInfo">
+                <h4>{{ skill.name }}</h4>
+                <p>
+                    {{ skill.description }}
+                </p>
+            </td>
+            <td class="settings__tableActions">
+                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-edit"></i> Edit</a>
+                <a class="tag tag--pill tag--main settings__btn" href="#"><i class="im im-x-mark-circle-o"></i>
+                    Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</main>
 {% endblock %}
