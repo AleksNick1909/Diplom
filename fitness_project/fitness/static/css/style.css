@@ -1,8 +1,13 @@
 body{
     padding: 0;
     margin: 0;
-
+    background-color: rgb(232, 234, 251);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+a{
+  text-decoration: none;
+  color: black;
+
 }
 .wrap{
     max-width: 1200px;
@@ -38,12 +43,14 @@ body{
     margin-left: 50px;
 }
 img{
-    width: 170px;
     height: 100px;
 }
 .logo{
     font-weight: bold;
     color: rgb(189, 92, 7);
+}
+.content{
+  margin: 0 auto;
 }
 .content .wrap{
     display: flex;
@@ -69,6 +76,7 @@ button{
 }
 .center{
     text-align: center;
+    padding: inherit
 }
 input{
     width: 100%;
@@ -83,6 +91,7 @@ input{
     border-radius: 6px;
     margin: 10px;
     display: inline-block;
+    background: beige
 }
 .top{
     padding: 2px 24px;
@@ -115,6 +124,7 @@ input{
     margin: 20px;
     display: inline-block;
     list-style: none;
+    background: beige;
 }
 .content_prof ul{
     text-align: center;
@@ -126,67 +136,180 @@ input{
   Account Settings
 ========================*/
 
+/* Стили для контейнера */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 50px;
+}
+
+/* Стили для макета */
+.layout {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Стили для кнопки редактирования */
+.tag--pill {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  margin-bottom: 10px;
+}
+
+/* Стили для изображения профиля */
+.layout img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 10px;
+}
+
+/* Стили для имени профиля */
+.layout h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+/* Стили для краткой информации профиля */
+.layout p {
+  margin-bottom: 10px;
+}
+
+/* Стили для списка социальных ссылок */
+.layout ul {
+  list-style-type: none;
+  margin-bottom: 10px;
+}
+
+/* Стили для элементов списка */
+.layout ul li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+/* Стили для ссылок социальных сетей */
+.layout ul li a {
+  display: block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  background-color: #a11d93;
+  color: #fff;
+}
+
+/* Стили для параграфа с биографией */
+.layout p:last-child {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Стили для блока настроек */
 .settings {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .settings__title {
-    font-size: 2.4rem;
-    text-transform: uppercase;
-    font-weight: 700;
-    color: var(--color-sub);
-  }
-  
-  .settings__table {
-    margin-top: 3rem;
-    margin-bottom: 5rem;
-    padding: 0 3rem;
-    background: var(--color-white);
-  }
-  
-  .settings__table tr {
-    width: 100%;
-  }
-  
-  .settings__table tr > td {
-    padding: 2rem 0;
-  }
-  
-  .settings__table tr:not(:last-child) td {
-    border-bottom: 2px solid var(--color-white-light);
-  }
-  
-  .settings__thumbnail {
-    width: 23%;
-    min-width: 10rem;
-  }
-  
-  .settings__thumbnail img {
-    padding-right: 3rem;
-    height: 15rem;
-    object-fit: contain;
-  }
-  
-  .settings__tableInfo{
-    width: 100%;
-  }
-  
-  .settings__tableInfo h4,
-  .settings__tableInfo a {
-    padding-right: 1rem;
-    width: auto;
-    font-size: 1.6rem;
-    font-weight: 500;
-    color: var(--color-sub);
-  }
-  
-  .settings__tableInfo p {
-    font-size: 1.4rem;
-  }
-  
-  .settings__tableActions {
-    text-align: right;
-  }
-  
+  text-align: center;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+/* Стили для заголовка блока настроек */
+.settings__title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+/* Стили для кнопки добавления навыка */
+.tag--lg {
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+/* Стили для таблицы */
+.settings__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+/* Стили для ячеек таблицы */
+.settings__table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Стили для заголовка навыка */
+.settings__table td h4 {
+  font-size: 18px;
+  margin-bottom: 5px;
+}
+
+/* Стили для описания навыка */
+.settings__table td p {
+  margin-bottom: 5px;
+}
+
+/* Стили для действий над навыком */
+.settings__tableActions {
+  text-align: center;
+}
+
+/* Стили для кнопок действий */
+.settings__tableActions a {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  background-color: #007bff;
+  color: #fff;
+  margin-right: 5px;
+}
+
+/*===========================
+Стили для страницы с тренерами
+===========================*/
+
+/* Стили для заголовка */
+h1 {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+/* Стили для контейнера тренеров */
+.content_prof {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Стили для профиля тренера */
+.prof {
+  list-style-type: none;
+  width: 300px;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.prof li:first-child {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.prof li:nth-child(2) {
+  margin-bottom: 10px;
+}
+
+.prof img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}

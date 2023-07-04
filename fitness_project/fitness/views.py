@@ -5,6 +5,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
 from .models import Profile
 from django.contrib.auth.decorators import login_required
+from .forms import ProfileForm, SkillForm
+from django.contrib import messages
 
 
 def home(request):
@@ -82,5 +84,66 @@ def user_account(request):
 
 @login_required(login_url='loginuser')
 def edit_account(request):
-    return render(request, 'fitness/profile_form.html')
+    profile = request.user.profile
+    form = ProfileForm(instance=profile)
+
+    if request.method == 'POST':
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+
+            return redirect('account')
+
+    context = {'form': form}
+    return render(request, 'fitness/profile_form.html', context)
+
+
+@login_required(login_url='loginuser')
+def create_skill(request):
+    profile = request.user.profile
+    form = SkillForm()
+
+    if request.method == "POST":
+        form = SkillForm(request.POST)
+        if form.is_valid():
+            skill = form.save(commit=False)
+            skill.owner = profile
+            skill.save()
+            messages.success(request, "Skill was added successfully!")
+            return redirect('account')
+
+    context = {"form": form}
+    return render(request, 'fitness/skill_form.html', context)
+
+
+@login_required(login_url='loginuser')
+def update_skill(request, pk):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=pk)
+    form = SkillForm(instance=skill)
+
+    if request.method == "POST":
+        form = SkillForm(request.POST, instance=skill)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Skill was updated successfully!")
+            return redirect('account')
+
+    context = {'form': form}
+    return render(request, 'fitness/skill_form.html', context)
+
+
+@login_required(login_url='loginuser')
+def delete_skill(request, pk):
+    profile = request.user.profile
+    skill = profile.skill_set.get(id=pk)
+
+    if request.method == "POST":
+        skill.delete()
+        messages.success(request, "Skill was deleted successfully!")
+        return redirect('account')
+
+    context = {'object': skill}
+    return render(request, 'fitness/delete.html', context)
+
 
