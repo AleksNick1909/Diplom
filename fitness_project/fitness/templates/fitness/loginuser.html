@@ -4,7 +4,7 @@
 
 <h1>Авторизация:</h1>
 <h2>{{ error }}</h2>
-<form method="post" class="bg">
+<form method="post" class="bg" style="height:350px">
     {% csrf_token %}
     {{ form.as_p }}
     <div class="center">

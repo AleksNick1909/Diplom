@@ -3,11 +3,30 @@ body{
     margin: 0;
     background-color: rgb(232, 234, 251);
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-image: url(../../../media/profiles/img2.jpg);
+    background-size: cover;
+    background-position: inherit;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+    /* position: absolute; */
+    /* left: 0px;
+    top: 0px;
+    z-index: 0; */
 }
+.changed {
+  -webkit-filter : hue-rotate(180deg);
+  filter : hue-rotate(180deg);
+  }
 a{
   text-decoration: none;
   color: black;
-
+}
+p{
+  color: rgb(210, 210, 210)
+}
+label{
+  color: black;
 }
 .wrap{
     max-width: 1200px;
@@ -16,9 +35,9 @@ a{
     box-sizing: border-box;
 }
 .menu{
-    background: #5294d6;
+    background: black;
     padding: 10px;
-    box-shadow: 0 2px 12px 2px #1079e2;
+    box-shadow: 0 2px 12px 2px #673729;
 
 }
 .menu .wrap{
@@ -35,7 +54,7 @@ a{
 }
 
 .menu a{
-    color: black;
+    color: rgb(189, 92, 7);
     font-weight: bold;
     text-decoration: none;
 }
@@ -59,8 +78,8 @@ img{
     justify-content: center;
     margin-top: 40px;
 }
-h1, h2{
-    color: #1079e2;
+h1, h2, h4{
+    color: #ffffff;
 }
 .btn{
     background: #1079e2;
@@ -69,9 +88,9 @@ h1, h2{
 button{
     border-radius: 6px;
     box-shadow: inset 0 0 6px 2px #fff;
-    padding: 10px 40px;
-    margin-top: 40px;
-    font-size: 24px;
+    padding: 10px 30px;
+    /* margin-top: -10px; */
+    font-size: 28px;
     cursor: pointer;
 }
 .center{
@@ -84,6 +103,9 @@ input{
     box-sizing: border-box;
     margin-top: 4px;
 }
+textarea{
+  width: 99%;
+}
 .bg{
     box-shadow: 0 2px 12px 2px #1079e2;
     padding: 40px;
@@ -95,10 +117,10 @@ input{
 }
 .top{
     padding: 2px 24px;
-    margin-top: 0;
+    margin-top: -3px;
     background: transparent;
     border: none;
-    color: black;
+    color: rgb(189, 92, 7);
 }
 .register ul{
     margin-top: -16px;
@@ -146,8 +168,8 @@ input{
 }
 
 /* Стили для макета */
+
 .layout {
-  text-align: center;
   margin-bottom: 20px;
 }
 
