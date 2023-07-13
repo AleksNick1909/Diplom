@@ -18,6 +18,10 @@ class Profile(models.Model):
     def __str__(self):
         return self.username
 
+    class Meta:
+        verbose_name = "Профиль"
+        verbose_name_plural = "Профили"
+
 
 class Skill(models.Model):
     owner = models.ForeignKey(Profile, on_delete=models.CASCADE, blank=True, null=True)
@@ -27,3 +31,7 @@ class Skill(models.Model):
 
     def __str__(self):
         return self.name
+
+    class Meta:
+        verbose_name = "Навык"
+        verbose_name_plural = "Навыки"
