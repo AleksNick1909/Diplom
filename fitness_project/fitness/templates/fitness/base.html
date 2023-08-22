@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Fitness</title>
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
 <body>
@@ -11,10 +11,10 @@
 <div class="menu">
     <div class="wrap">
         <div class="logo">
-            <img src="{% static 'skills/fit.png' %}" alt="">
+            <a href="{% url 'home' %}"><img src="{% static 'skills/fit.png' %}" alt=""></a>
         </div>
         <ul>
-            <li class="logo">Пользователь: {{ user.username }}</li>
+            <li class="logo"><a href="{% url 'account' %}">Пользователь: {{ user.username }}</a></li>
             <li>
               <form action="{% url 'logoutuser' %}" method="post">
                 {% csrf_token %}
@@ -28,7 +28,7 @@
 <div class="menu">
     <div class="wrap">
         <div class="logo">
-            <img src="{% static 'skills/fit.png' %}" alt="">
+            <a href="{% url 'home' %}"><img src="{% static 'skills/fit.png' %}" alt=""></a>
         </div>
         <ul>
             <li><a href="{% url 'signupuser' %}">Я тренер</a></li>
