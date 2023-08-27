@@ -3,6 +3,16 @@
 <h1>
     Тренеры
 </h1>
+
+<div>
+    <form class="form" action="{% url 'profiles' %}" method="get">
+        <div>
+            <label>Поиск</label>
+            <input type="text" name="search_query" value="{{ search_query }}" placeholder="Поиск тренера">
+        </div>
+        <input type="submit" value="Поиск">
+    </form>
+</div>
 <div class="content_prof">
     {% for profile in profiles %}
     <a href="{% url 'coach' profile.id %}"><ul class="prof">

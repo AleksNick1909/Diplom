@@ -3,10 +3,11 @@ from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.contrib.auth.models import User
 from django.contrib.auth import login, logout, authenticate
 from django.db import IntegrityError
-from .models import Profile
+from .models import Profile, Skill
 from django.contrib.auth.decorators import login_required
 from .forms import ProfileForm, SkillForm
 from django.contrib import messages
+from .utils import search_profiles
 
 
 def home(request):
@@ -14,8 +15,8 @@ def home(request):
 
 
 def profiles(request):
-    prof = Profile.objects.all()
-    context = {'profiles': prof}
+    prof, search_query = search_profiles(request)
+    context = {'profiles': prof, 'search_query': search_query}
     return render(request, 'fitness/profiles.html', context)
 
 
