@@ -15,11 +15,16 @@
 </div>
 <div class="content_prof">
     {% for profile in profiles %}
-    <a href="{% url 'coach' profile.id %}"><ul class="prof">
-        <li><b>{{ profile.name }}</b></li>
-        <li>{{ profile.short_info }}</li>
-        <li><img src="{{ profile.profile_image.url }}" alt=""></li>
-    </ul></a>
+    <a href="{% url 'coach' profile.id %}">
+        <ul class="prof">
+            <li><b>{{ profile.name }}</b></li>
+            <li>{{ profile.short_info }}</li>
+            <li><img src="{{ profile.profile_image.url }}" alt=""></li>
+            {% for skill in profile.skill_set.all|slice:"3" %}
+            <li class="tag tag--pill tag--sub settings__btn tag--lg"> {{ skill }}</li>
+            {% endfor %}
+        </ul>
+    </a>
     {% endfor %}
 </div>
 
