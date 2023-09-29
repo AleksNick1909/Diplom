@@ -10,6 +10,10 @@
         </div>
         <div>
             <p>{{ profile.bio }}</p>
+            {% for skill in profile.skill_set.all|slice:"3" %}
+            <p class="tag tag--pill tag--sub settings__btn tag--lg"> {{ skill.name }}</p>
+            <p> {{ skill.description }}</p>
+            {% endfor %}
         </div>
     </div>
 </main>
